@@ -1,3 +1,8 @@
+import { NetworkError, DataError } from "../utils/errorHandler.ts";
+
+
+
+
 type Product = {
   id: number;
   title: string;
@@ -9,12 +14,12 @@ type ProductsResponse = {
 };
 
 
-async function fetchApiData(): Promise<void>{
+async function fetchAPIData(): Promise<void>{
     try{
         const response = await fetch('https://dummyjson.com/products');
-    //       if (!response.ok) {
-    //   throw new Error(`HTTP error! Status: ${response.status}`);
-    // }
+          if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
 
         const data = await response.json();
         const products = data.products;
@@ -24,8 +29,15 @@ async function fetchApiData(): Promise<void>{
     }
         
 
-    } catch(e){
-    console.error(e);
-    }
+    } catch(error)  {
+        if (error instanceof NetworkError) {
+          console.log("Network Error", error.message);
+        } else if (error instanceof DataError) {
+          console.log("Data Error", error);
+        } else {
+          console.error("Unknown Error:", error);
+        }
+      }
+     
 }
-fetchApiData();
+fetchAPIData();

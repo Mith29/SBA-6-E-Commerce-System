@@ -1,5 +1,5 @@
-import { Product } from "../models/product.ts";
-import { NetworkError, DataError } from "../utils/errorHandler.ts";
+import { Product } from "../models/product.js";
+import { NetworkError, DataError } from "../utils/errorHandler.js";
 
 
 

@@ -1,4 +1,4 @@
-import { Product} from "../models/product.ts";
+import { Product} from "../models/product.js";
 
 export function calculateTax(product: Product): number{
 if(product.category === "groceries")

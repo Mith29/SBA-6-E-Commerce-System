@@ -10,7 +10,7 @@ export let products: Product[];
 
 
 export async function fetchAPIData(): Promise<void>{
-    try{
+  try{
         const response: Response = await fetch('https://dummyjson.com/products');
           if (!response.ok) {
       throw new NetworkError(`HTTP error! Status: ${response.status}`);

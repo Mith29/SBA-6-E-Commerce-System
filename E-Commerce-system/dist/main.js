@@ -3,6 +3,9 @@ import { calculateDiscount } from "./utils/discountCalculator.js";
 import { fetchAPIData, products } from "./services/apiService.js";
 import { calculateTax } from "./utils/taxCalculator.js";
 import { NetworkError, DataError } from "./utils/errorHandler.js";
+
+const fetchButton = document.getElementById('fetchData');
+fetchButton.addEventListener("click", main());
 async function main() {
     try {
         await fetchAPIData();
@@ -27,4 +30,5 @@ async function main() {
         console.log("----------------------------------");
     }
 }
-main();
+
+
